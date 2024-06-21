@@ -1,5 +1,5 @@
-@import '~antd/dist/antd.css';
+@import "~antd/dist/reset.css";
 
 .ant-select-multiple .ant-select-selection-item {
-  height: 27px;
+	height: 27px;
 }
