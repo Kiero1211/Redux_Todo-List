@@ -1,6 +1,6 @@
 import { ADD_TODO } from "./actions";
 
-export const iniState = {
+export const initState = {
     filter: {
         searchTerm: "",
         status: "all",
@@ -13,7 +13,7 @@ export const iniState = {
     ]
 };
 
-const rootReducer = (state = iniState, action) => {
+const rootReducer = (state = initState, action) => {
     console.log(state, action);
     const { type, payload } = action;
     switch (type) {

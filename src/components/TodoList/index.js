@@ -25,14 +25,13 @@ export default function TodoList() {
 
   useEffect(() => {
     inputRef.current.focus();
-    console.log(todos);
   }, [todos])
 
 
   return (
     <Row style={{ height: 'calc(100% - 40px)' }}>
       <Col span={24} style={{ height: 'calc(100% - 40px)', overflowY: 'auto' }}>
-        {todos.map(todo => <Todo name={todo.name} prioriry={todo.priority}></Todo>)}
+        {todos.map((todo, index) => <Todo key={index} name={todo.name} prioriry={todo.priority}></Todo>)}
       </Col>
       <Col span={24}>
         <Input.Group style={{ display: 'flex' }} compact>
