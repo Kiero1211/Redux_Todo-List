@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addTodo } from '../../redux/actions';
 import { useState, useRef, useEffect } from 'react';
 import { v4 as uuidv4 } from "uuid";
-import { todoListSelector } from '../../redux/selectors';
+import { filteredTodosSelector } from '../../redux/selectors';
 
 export default function TodoList() {
   const [name, setName] = useState("");
@@ -12,7 +12,7 @@ export default function TodoList() {
   const inputRef = useRef();
   const dispatch = useDispatch();
 
-  const todos = useSelector(todoListSelector);
+  const todos = useSelector(filteredTodosSelector);
 
   const handleSubmit = () => {
     dispatch(addTodo(
