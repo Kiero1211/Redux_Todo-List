@@ -9,7 +9,6 @@ export default function Filters() {
   const dispatch = useDispatch();
 
   const handleFilter = (type, value) => {
-    console.log(type, value);
     dispatch(addFilter({ [type]: value }));
   }
 

@@ -1,4 +1,4 @@
-import { ADD_TODO, ADD_FILTER } from "./actions";
+import { ADD_TODO, ADD_FILTER, SET_TODO_STATUS } from "./actions";
 
 export const initState = {
     filter: {
@@ -23,7 +23,7 @@ const rootReducer = (state = initState, action) => {
             }
         case ADD_FILTER:
             const { searchTerm, status, priority } = payload;
-            const newSeachTerm = searchTerm;
+            const newSeachTerm = searchTerm ?? state.filter.searchTerm;
             const newStatus = status || state.filter.status;
             const newPriority = priority || state.filter.priority;
             return {
@@ -34,6 +34,18 @@ const rootReducer = (state = initState, action) => {
                     priority: newPriority
                 }
             }
+        case SET_TODO_STATUS:
+            const { name, completed } = payload;
+
+            return {
+                ...state,
+                todoList: state.todoList.map(todo => {
+                    if (todo.name === name) {
+                        return { ...todo, completed };
+                    }
+                    return todo;
+                })
+            };
         default:
             return state;
     }

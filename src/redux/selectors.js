@@ -20,3 +20,4 @@ export const todoListSelector = (state) => {
     }
     return todoRemainings;
 }
+
