@@ -3,8 +3,7 @@ import rootReducer, { initState } from "./reducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 const composeEnhancers = composeWithDevTools();
-console.log(composeEnhancers);
 
-const store = createStore(rootReducer, composeEnhancers);
+const store = createStore(rootReducer, initState, composeEnhancers);
 
 export default store;

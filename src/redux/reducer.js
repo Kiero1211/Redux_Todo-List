@@ -1,9 +1,9 @@
-import { ADD_TODO } from "./actions";
+import { ADD_TODO, ADD_FILTER } from "./actions";
 
 export const initState = {
     filter: {
         searchTerm: "",
-        status: "all",
+        status: "All",
         priority: []
     },
     todoList: [
@@ -14,13 +14,25 @@ export const initState = {
 };
 
 const rootReducer = (state = initState, action) => {
-    console.log(state, action);
     const { type, payload } = action;
     switch (type) {
         case ADD_TODO:
             return {
                 ...state,
                 todoList: [...state.todoList, payload]
+            }
+        case ADD_FILTER:
+            const { searchTerm, status, priority } = payload;
+            const newSeachTerm = searchTerm;
+            const newStatus = status || state.filter.status;
+            const newPriority = priority || state.filter.priority;
+            return {
+                ...state,
+                filter: {
+                    searchTerm: newSeachTerm,
+                    status: newStatus,
+                    priority: newPriority
+                }
             }
         default:
             return state;
